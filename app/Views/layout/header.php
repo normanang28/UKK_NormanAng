@@ -38,7 +38,7 @@
 		<div class="nav-header">
 			<a href="index.html" class="brand-logo">
 				<img class="logo-abbr" src="<?= base_url('/logo/logo.png')?>" alt="" style="width: 70px; height: 50px;">
-				<img class="brand-title" src="<?= base_url('/logo/text.png')?>" alt="" style="margin-top: 2px; height: 65px; width: 100%;">
+				<img class="brand-title" src="<?= base_url('/logo/text.png')?>" alt="" style="margin-top: 2px; height: 35px; width: 100%;">
 			</a>
 
 			<div class="nav-control">
