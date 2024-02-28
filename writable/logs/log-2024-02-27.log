@@ -1,0 +1,63 @@
+ERROR - 2024-02-27 21:08:18 --> Error connecting to the database: Access denied for user ''@'localhost' (using password: NO)
+CRITICAL - 2024-02-27 21:08:18 --> Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user ''@'localhost' (using password: NO)
+#0 C:\xampp\htdocs\UKK_NormanAng\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\UKK_NormanAng\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\UKK_NormanAng\app\Models\M_model.php(475): CodeIgniter\Database\BaseBuilder->get()
+#3 C:\xampp\htdocs\UKK_NormanAng\app\Controllers\Petugas.php(16): App\Models\M_model->fusionOderBy('pegawai', 'user', 'pegawai.maker_p...', 'tanggal_petugas')
+#4 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(832): App\Controllers\Petugas->index()
+#5 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Petugas))
+#6 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\UKK_NormanAng\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\UKK_NormanAng\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#9 {main}
+ERROR - 2024-02-27 21:08:33 --> Table 'kasir.pegawai' doesn't exist
+CRITICAL - 2024-02-27 21:08:33 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\UKK_NormanAng\app\Controllers\Petugas.php(16): App\Models\M_model->fusionOderBy('pegawai', 'user', 'pegawai.maker_p...', 'tanggal_petugas')
+#1 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(832): App\Controllers\Petugas->index()
+#2 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Petugas))
+#3 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\UKK_NormanAng\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\UKK_NormanAng\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+ERROR - 2024-02-27 21:09:22 --> Table 'kasir.pegawai' doesn't exist
+CRITICAL - 2024-02-27 21:09:22 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\UKK_NormanAng\app\Controllers\Petugas.php(16): App\Models\M_model->fusionOderBy('pegawai', 'user', 'pegawai.id_user...', 'tanggal_petugas')
+#1 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(832): App\Controllers\Petugas->index()
+#2 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Petugas))
+#3 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\UKK_NormanAng\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\UKK_NormanAng\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+ERROR - 2024-02-27 21:09:31 --> Table 'kasir.pegawai' doesn't exist
+CRITICAL - 2024-02-27 21:09:31 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\UKK_NormanAng\app\Controllers\Petugas.php(16): App\Models\M_model->fusion('pegawai', 'user', 'pegawai.maker_p...')
+#1 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(832): App\Controllers\Petugas->index()
+#2 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Petugas))
+#3 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\UKK_NormanAng\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\UKK_NormanAng\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+ERROR - 2024-02-27 21:14:59 --> Column 'maker_petugas' cannot be null
+ERROR - 2024-02-27 21:48:07 --> Column 'maker_petugas' cannot be null
+CRITICAL - 2024-02-27 21:50:35 --> Invalid file: pegawai/edit.php
+#0 C:\xampp\htdocs\UKK_NormanAng\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pegawai/edit.ph...')
+#1 C:\xampp\htdocs\UKK_NormanAng\system\Common.php(1089): CodeIgniter\View\View->render('pegawai/edit', Array, true)
+#2 C:\xampp\htdocs\UKK_NormanAng\app\Controllers\Petugas.php(91): view('pegawai/edit')
+#3 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(832): App\Controllers\Petugas->edit(NULL)
+#4 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Petugas))
+#5 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\UKK_NormanAng\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\UKK_NormanAng\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#8 {main}
+CRITICAL - 2024-02-27 21:50:58 --> Invalid file: pegawai/edit.php
+#0 C:\xampp\htdocs\UKK_NormanAng\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pegawai/edit.ph...')
+#1 C:\xampp\htdocs\UKK_NormanAng\system\Common.php(1089): CodeIgniter\View\View->render('pegawai/edit', Array, true)
+#2 C:\xampp\htdocs\UKK_NormanAng\app\Controllers\Petugas.php(91): view('pegawai/edit')
+#3 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(832): App\Controllers\Petugas->edit(NULL)
+#4 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Petugas))
+#5 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\UKK_NormanAng\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\UKK_NormanAng\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#8 {main}
+ERROR - 2024-02-27 21:53:53 --> Unknown column 'id_pegawai_user' in 'where clause'
