@@ -1,4 +1,4 @@
-<div class="row d-flex">
+<div class="row">
 <div class="col-md-5 col-sm-5 col-xs-5">
     <div class="card">
         <div class="card-body">
@@ -17,13 +17,29 @@
                             <option disabled selected>Pilih Nama Barang</option>
                             <?php foreach ($p as $brg) { ?>
                                 <?php
-                                    $stokColor = ($brg->jumlah <= 0) ? 'color: red;' : '';             ?>
+                                    $stokColor = ($brg->jumlah <= 0) ? 'color: red;' : '';             
+                                ?>
                                 <option class="text-capitalize" value="<?php echo $brg->id_barang ?>" style="<?php echo $stokColor; ?>">
                                     <?php echo $brg->nama_barang ?>, Tersedia  <?php echo $brg->jumlah ?>  - (Rp <?php echo number_format($brg->harga_barang, 2, ',', '.') ?>/BRG)
                                 </option>
                             <?php } ?>
                         </select>
                     </div>
+
+                    <span id="stok_message" style="color: red;"></span>
+
+                    <script>
+                        document.getElementById("id_barang").addEventListener("change", function() {
+                            var selectedOption = this.options[this.selectedIndex];
+                            var stokColor = selectedOption.style.color;
+
+                            if (stokColor === "red") {
+                                document.getElementById("stok_message").innerText = "Stok barang tidak tersedia!";
+                            } else {
+                                document.getElementById("stok_message").innerText = "";
+                            }
+                        });
+                    </script>
                     <div class="mb-3 col-md-12">
                         <label class="form-label">QTY<span style="color: black;"> :</span></label>
                         <input type="text" id="qty" name="qty" class="form-control text-capitalize" placeholder="QTY" oninput="validateNumberInput(this)" autocomplete="on">
@@ -81,7 +97,6 @@ document.addEventListener('DOMContentLoaded', function () {
             kembalianField.classList.remove('text-danger');
         }
 
-        // Check if cash input is sufficient for payment, then enable/disable updateButton accordingly
         var updateButton = document.getElementById('updateButton');
         if (cashInput >= totalPayment) {
             updateButton.removeAttribute('disabled');
@@ -111,23 +126,181 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-<div class="col-md-7 col-sm-7 col-xs-7 text-start">
-    <div class="card">
-        <div class="card-body">
-            
-        </div>
+<div class="col-md-7 col-sm-7 col-xs-7">
+    <div class="row" id="tableBody">
+        <?php foreach ($p as $dataa): ?>       
+            <div class="col-7 col-sm-7 col-md-7 col-lg-3 mb-5 mb-lg-0" data-aos="fade-left" data-aos-delay="100">
+                <div class="media-1 position-relative">
+                    <img src="/barang/default_brg.jpg" alt="Image" class="img-fluid"><h1></h1>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h6 class="text-capitalize"><?php echo $dataa->nama_barang ?></h6>
+                            <span class="text-uppercase">Rp <?php echo number_format($dataa->harga_barang, 2, ',', '.') ?></span>
+                            <span class="text-capitalize" style="color: <?php echo ($dataa->jumlah < 0) ? 'red' : (($dataa->jumlah == 0) ? 'red' : 'inherit'); ?>">
+                                Tersedia <?php echo $dataa->jumlah; ?>
+                            </span>
+                        </div>
+                    </div>
+                </div><br>
+            </div>
+        <?php endforeach; ?>
     </div>
+    <div class="d-flex justify-content-end gap-2">
+        <div class="pagination">
+            <nav>
+                <ul class="pagination pagination-sm">
+                    <li class="page-item page-indicator" id="previousPageButton">
+                        <a class="page-link" href="javascript:void(0)">
+                            <i class="la la-angle-left"></i></a>
+                    </li>
+                    <li class="page-item" id="currentPageNumber">1</li>
+                    <li class="page-item page-indicator" id="nextPageButton">
+                        <a class="page-link" href="javascript:void(0)">
+                            <i class="la la-angle-right"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <style>
+            .pagination {
+                display: flex;
+                justify-content: flex-end; 
+                align-items: center; 
+            }
+
+            .page-numbers button {
+                margin-left: 5px; 
+                font-size: 14px; 
+                padding: 5px 10px;
+            }
+
+            .center-column {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .center-column .btn {
+                margin-top: 5px; 
+            }
+
+            .button-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .media-1 img {
+                border-radius: 10px; 
+            }
+            .img-fluid {
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4); 
+            }
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const tableBody = document.getElementById('tableBody');
+                const currentPageNumber = document.getElementById('currentPageNumber');
+                const previousPageButton = document.getElementById('previousPageButton');
+                const nextPageButton = document.getElementById('nextPageButton');
+
+                const data = <?= json_encode($p) ?>;
+                console.log(data);
+ 
+                const itemsPerPage = 8;
+                let currentPage = 1;
+                const totalPages = Math.ceil(data.length / itemsPerPage);
+
+                function displayDataOnPage(page) {
+                        tableBody.innerHTML = '';
+
+                        const startIndex = (page - 1) * itemsPerPage;
+                        const endIndex = startIndex + itemsPerPage;
+
+                        for (let i = startIndex; i < endIndex && i < data.length; i++) {
+                            const currentData = data[i];
+                            const row = `
+                                <div class="col-7 col-sm-7 col-md-7 col-lg-3 mb-5 mb-lg-0" data-aos="fade-left" data-aos-delay="100">
+                                    <div class="media-1 position-relative">
+                                        <img src="/barang/default_brg.jpg" alt="Image" class="img-fluid">
+                                        <h1></h1>
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <h6 class="text-capitalize">${currentData.nama_barang}</h6>
+                                                <span class="text-uppercase">Rp ${number_format(currentData.harga_barang, 2, ',', '.')}</span>
+                                                <span class="text-capitalize" style="color: ${currentData.jumlah < 0 ? 'red' : (currentData.jumlah == 0 ? 'red' : 'inherit')}">
+                                                    Tersedia ${currentData.jumlah}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div><br>
+                                </div>
+                            `;
+                            tableBody.innerHTML += row;
+                        }
+                    }
+
+
+                function number_format(number, decimals, decPoint, thousandsSep) {
+                    decimals = decimals || 0;
+                    number = parseFloat(number);
+
+                    if (!decPoint || !thousandsSep) {
+                        decPoint = '.';
+                        thousandsSep = ',';
+                    }
+
+                    var roundedNumber = Math.round(Math.abs(number) * ('1e' + decimals)) + '';
+                    var numbersString = (decimals ? roundedNumber.slice(0, decimals * -1) : roundedNumber) +
+                        (decimals ? decPoint + roundedNumber.slice(decimals * -1) : '');
+
+                    var formattedNumber = numbersString.replace(/\B(?=(\d{3})+(?!\d))/g, thousandsSep);
+
+                    return (number < 0 ? '-' : '') + formattedNumber;
+                }
+
+                function updatePageNumbers() {
+                    currentPageNumber.textContent = currentPage;
+                }
+
+                previousPageButton.addEventListener('click', function () {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        displayDataOnPage(currentPage);
+                        updatePageNumbers();
+                    }
+                });
+
+                nextPageButton.addEventListener('click', function () {
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        displayDataOnPage(currentPage);
+                        updatePageNumbers();
+                    }
+                });
+
+                displayDataOnPage(currentPage);
+                updatePageNumbers();
+            });
+        </script>
 </div>
-</div>
+</div><br>
 
 <div class="col-12">
 	<div class="card">
 		<div class="card-body">
 			<div class="table-responsive">
                 <div class="text-end">
-                    <a href="<?= base_url('/Laporan/print_nota')?>"><button type="button" class="btn btn-info mb-2 float-end">
-                        <i class="fa-solid fa-print"></i> Print Nota
-                    </button></a>
+                    <a href="<?= base_url('/kasir/clear')?>">
+                        <button type="button" class="btn btn-info mb-2">
+                            <i class="fa-solid fa-check"></i> Clear Data
+                        </button>
+                    </a>
+                    <a href="<?= base_url('/Laporan/print_nota')?>">
+                        <button type="button" class="btn btn-info mb-2">
+                            <i class="fa-solid fa-print"></i> Print Nota
+                        </button>
+                    </a>
                 </div>
 
 				<table id="example" class="table items-table table table-bordered table-striped verticle-middle table-responsive-sm" style="min-width: 100%">

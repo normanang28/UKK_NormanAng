@@ -15,6 +15,13 @@ class LogOut extends BaseController
             $model = new M_model();
             $id = session()->get('id');
 
+            $data=array(
+                'id_user_log'=>session()->get('id'),
+                'aktifitas'=>"LogOut dengan ID ". $id."",
+                'waktu'=>date('Y-m-d H:i:s')
+            );
+            $model->simpan('log_activity',$data);
+
             session()->destroy();
             return redirect()->to('/');
         } else {

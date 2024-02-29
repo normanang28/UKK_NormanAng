@@ -861,12 +861,12 @@ class M_model extends model
 		return $this->db->table($table1)->join($table2, $on)->join($table3, $on2)->getWhere($where)->getResult();
 	}
 
-	public function print_invoice($table, $username) {
+	public function print_nota($table, $username) {
 	    return $this->db->query(
 	        "SELECT *
 	        FROM ".$table."
-	        JOIN barang ON ".$table.".id_barang_barang=barang.id_barang
-	        JOIN user ON ".$table.".maker_bk=user.id_user
+	        JOIN barang ON ".$table.".id_barang_pp=barang.id_barang
+	        JOIN user ON ".$table.".maker_pp=user.id_user
 	        WHERE user.username = '".$username."'"
 	    )->getResult();
 	}
@@ -877,6 +877,18 @@ class M_model extends model
 			"SELECT *
 			FROM ".$table."
 			join permainan ON ".$table.".id_permainan_playground = permainan.id_permainan
+			WHERE ".$table.".tanggal_laporan
+			BETWEEN '".$awal."'
+			AND '".$akhir."'"
+		)->getResult();
+	}
+
+	public function filter_laporan_pengeluaran ($table, $awal,$akhir)
+	{
+		return $this->db->query(
+			"SELECT *
+			FROM ".$table."
+			join barang ON ".$table.".id_barang_pp = barang.id_barang
 			WHERE ".$table.".tanggal_laporan
 			BETWEEN '".$awal."'
 			AND '".$akhir."'"
@@ -899,14 +911,4 @@ class M_model extends model
     {
         $this->db->update($table, $data, $where);
     }
-
-	public function print_nota($id_playground) {
-	    return $this->db->query(
-	        "SELECT *
-	        FROM playground
-	        JOIN permainan ON playground.id_permainan_playground = permainan.id_permainan
-	        JOIN user ON playground.maker_playground = user.id_user
-	        WHERE playground.id_playground = '".$id_playground."'"
-	    )->getResult();
-	}
 }

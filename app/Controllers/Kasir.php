@@ -37,6 +37,7 @@ class Kasir extends BaseController
     {
         $model = new M_model();
         $model2 = new M_model();
+        $model3 = new M_model();
         $id_barang = $this->request->getPost('id_barang');
         $qty = $this->request->getPost('qty');
         $dibayar = $this->request->getPost('dibayar');
@@ -63,6 +64,13 @@ class Kasir extends BaseController
             'maker_pp' => $maker_pp
         );
         
+        $data3=array(
+            'id_user_log'=>session()->get('id'),
+            'aktifitas'=>"Menambah Data Penjualan Barang/Kasir Dengan ID barang ". $id_barang."",
+            'waktu'=>date('Y-m-d H:i:s')
+        );
+        $model->simpan('log_activity',$data3);
+
         $model->simpan('penjualan_barang',$data);
         $model->simpan('barang_keluar',$data2);
         return redirect()->to('/Kasir');
@@ -73,8 +81,32 @@ class Kasir extends BaseController
         $model=new M_model();
         $model2=new M_model();
         $where=array('id_penjualan_barang'=>$id);
+
+        $data=array(
+            'id_user_log'=>session()->get('id'),
+            'aktifitas'=>"Menghapus Data Penjualan Barang/Kasir Dengan ID ". $id."",
+            'waktu'=>date('Y-m-d H:i:s')
+        );
+        $model->simpan('log_activity',$data);
+
         $model->hapus('penjualan_barang',$where);
         $model2->hapus('barang_keluar',$where);
+        return redirect()->to('/Kasir');
+    }
+
+    public function clear()
+    {
+        $model=new M_model();
+        $where=array('penjualan_barang.maker_pp'=>session()->get('id'));
+
+        $data=array(
+            'id_user_log'=>session()->get('id'),
+            'aktifitas'=>"Clear Data Penjualan Barang/Kasir ",
+            'waktu'=>date('Y-m-d H:i:s')
+        );
+        $model->simpan('log_activity',$data);
+
+        $model->hapus('penjualan_barang', $where);
         return redirect()->to('/Kasir');
     }
 }

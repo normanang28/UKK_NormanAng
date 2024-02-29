@@ -39,6 +39,13 @@ class My_Account extends BaseController
             'password'=>md5($pass)
         );
 
+        $data=array(
+            'id_user_log'=>session()->get('id'),
+            'aktifitas'=>"Mengganti Password pada dengan ID akun ". $id."",
+            'waktu'=>date('Y-m-d H:i:s')
+        );
+        $model->simpan('log_activity',$data);
+
         $where=array('id_user'=>$id);
         $model->edit('user', $data, $where);
         return redirect()->to('/My_Account');

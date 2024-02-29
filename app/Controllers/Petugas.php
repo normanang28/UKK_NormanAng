@@ -56,6 +56,13 @@ class Petugas extends BaseController
             'maker_petugas' => $maker_petugas,
         );
 
+        $data=array(
+            'id_user_log'=>session()->get('id'),
+            'aktifitas'=>"menambah data petugas dengan nama ". $nama_petugas."",
+            'waktu'=>date('Y-m-d H:i:s')
+        );
+        $model->simpan('log_activity',$data);
+
         $model->simpan('petugas', $pegawai);
         return redirect()->to('/Petugas');
     }  
@@ -67,6 +74,14 @@ class Petugas extends BaseController
         $data=array(
             'password'=>md5('@dmin123')
         );
+
+        $data2=array(
+            'id_user_log'=>session()->get('id'),
+            'aktifitas'=>"Mereset password dengan ID ". $id."",
+            'waktu'=>date('Y-m-d H:i:s')
+        );
+        $model->simpan('log_activity',$data2);
+
         $model->edit('user',$data,$where);
 
         return redirect()->to('/Petugas');
@@ -129,6 +144,13 @@ class Petugas extends BaseController
             'tanggal_petugas' => $tanggal_petugas,
         );
 
+        $data2=array(
+            'id_user_log'=>session()->get('id'),
+            'aktifitas'=>"mengedit data petugas dengan nama ". $nama_petugas."",
+            'waktu'=>date('Y-m-d H:i:s')
+        );
+        $model->simpan('log_activity',$data2);
+
         $model->edit('petugas', $petugas, $where2);
         return redirect()->to('/Petugas');
     }
@@ -138,6 +160,13 @@ class Petugas extends BaseController
         $model=new M_model();
         $where2=array('id_user'=>$id);
         $where=array('id_user_petugas'=>$id);
+
+        $data2=array(
+            'id_user_log'=>session()->get('id'),
+            'aktifitas'=>"Menghapus data petugas dengan ID ". $id."",
+            'waktu'=>date('Y-m-d H:i:s')
+        );
+        $model->simpan('log_activity',$data2);
 
         $model->hapus('petugas',$where);
         $model->hapus('user',$where2);

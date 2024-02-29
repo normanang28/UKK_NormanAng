@@ -41,6 +41,13 @@ class Barang extends BaseController
             'maker_barang'=>$maker_barang
         );
         
+        $data=array(
+            'id_user_log'=>session()->get('id'),
+            'aktifitas'=>"Menambah Data Barang ". $nama_barang."",
+            'waktu'=>date('Y-m-d H:i:s')
+        );
+        $model->simpan('log_activity',$data);
+
         $model->simpan('barang',$data);
         return redirect()->to('/Barang/data_barang');
     }
@@ -82,6 +89,13 @@ class Barang extends BaseController
             'tanggal_barang' => $tanggal_barang,
         );
 
+        $data=array(
+            'id_user_log'=>session()->get('id'),
+            'aktifitas'=>"Mengedit Data Barang ". $nama_barang." Dengan ID ". $id."",
+            'waktu'=>date('Y-m-d H:i:s')
+        );
+        $model->simpan('log_activity',$data);
+
         $where=array('id_barang'=>$id);
         $model->edit('barang',$data,$where);
         return redirect()->to('/Barang/data_barang');
@@ -91,6 +105,14 @@ class Barang extends BaseController
     {
         $model=new M_model();
         $where=array('id_barang'=>$id);
+
+        $data=array(
+            'id_user_log'=>session()->get('id'),
+            'aktifitas'=>"Menghapus Data Barang Dengan ID ". $id."",
+            'waktu'=>date('Y-m-d H:i:s')
+        );
+        $model->simpan('log_activity',$data);
+
         $model->hapus('barang',$where);
         return redirect()->to('/Barang/data_barang');
     }
@@ -116,6 +138,25 @@ class Barang extends BaseController
         echo view('layout/footer'); 
     }
 
+    public function stok_barang()
+    {
+        $model=new M_model();
+        $on='pendataan_barang.id_barang_pb=barang.id_barang';
+        $on2='pendataan_barang.maker_pb=user.id_user';
+        $data['data']=$model->super('pendataan_barang', 'barang', 'user', $on, $on2);
+
+        $id=session()->get('id');
+        $where=array('id_user'=>$id);
+
+        $where=array('id_user' => session()->get('id'));
+        $data['foto']=$model->getRow('user',$where);
+
+        echo view('layout/header',$data);
+        echo view('layout/menu');
+        echo view('pendataan_barang/stok');
+        echo view('layout/footer'); 
+    }
+
     public function tambah_pendataan_barang()
     {
         $model=new M_model();
@@ -129,6 +170,13 @@ class Barang extends BaseController
             'maker_pb'=>$maker_pb
         );
         
+        $data=array(
+            'id_user_log'=>session()->get('id'),
+            'aktifitas'=>"Menambah Data Pendataan Barang dengan ID barang ". $id_barang."",
+            'waktu'=>date('Y-m-d H:i:s')
+        );
+        $model->simpan('log_activity',$data);
+
         $model->simpan('pendataan_barang',$data);
         return redirect()->to('/Barang/pendataan_barang');
     }
@@ -137,6 +185,14 @@ class Barang extends BaseController
     {
         $model=new M_model();
         $where=array('id_pendataan_barang'=>$id);
+
+        $data=array(
+            'id_user_log'=>session()->get('id'),
+            'aktifitas'=>"Menghapus Data Pendataan Barang dengan ID ". $id."",
+            'waktu'=>date('Y-m-d H:i:s')
+        );
+        $model->simpan('log_activity',$data);
+
         $model->hapus('pendataan_barang',$where);
         return redirect()->to('/Barang/pendataan_barang');
     }

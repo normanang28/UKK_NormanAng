@@ -1,0 +1,164 @@
+ERROR - 2024-02-29 07:59:28 --> MySQL server has gone away
+CRITICAL - 2024-02-29 07:59:28 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\UKK_NormanAng\app\Controllers\Kasir.php(20): App\Models\M_model->superWithWhere('penjualan_baran...', 'barang', 'user', 'penjualan_baran...', 'penjualan_baran...', Array)
+#1 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(832): App\Controllers\Kasir->index()
+#2 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Kasir))
+#3 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\UKK_NormanAng\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\UKK_NormanAng\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+ERROR - 2024-02-29 07:59:40 --> Error connecting to the database: No connection could be made because the target machine actively refused it.
+
+CRITICAL - 2024-02-29 07:59:40 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it.
+
+#0 C:\xampp\htdocs\UKK_NormanAng\system\Database\BaseConnection.php(577): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\UKK_NormanAng\system\Database\BaseBuilder.php(1588): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#2 C:\xampp\htdocs\UKK_NormanAng\app\Models\M_model.php(444): CodeIgniter\Database\BaseBuilder->getWhere(Array)
+#3 C:\xampp\htdocs\UKK_NormanAng\app\Controllers\Home.php(32): App\Models\M_model->getarray('user', Array)
+#4 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(832): App\Controllers\Home->aksi_login()
+#5 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#6 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\UKK_NormanAng\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\UKK_NormanAng\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#9 {main}
+ERROR - 2024-02-29 07:59:47 --> Table 'kasir.barang_masuk' doesn't exist
+CRITICAL - 2024-02-29 07:59:47 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\UKK_NormanAng\app\Controllers\Dashboard.php(20): App\Models\M_model->tampil('barang_masuk')
+#1 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(832): App\Controllers\Dashboard->index()
+#2 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#3 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\UKK_NormanAng\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\UKK_NormanAng\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+ERROR - 2024-02-29 08:08:06 --> Unknown column 'penjualan_barang.id_barang_barang' in 'on clause'
+CRITICAL - 2024-02-29 08:08:06 --> Call to a member function getResult() on bool
+#0 C:\xampp\htdocs\UKK_NormanAng\app\Controllers\Laporan.php(16): App\Models\M_model->print_invoice('penjualan_baran...', 'adminstrator')
+#1 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(832): App\Controllers\Laporan->print_nota()
+#2 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+#3 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\UKK_NormanAng\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\UKK_NormanAng\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2024-02-29 08:08:39 --> Cannot redeclare App\Models\M_model::print_nota()
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2024-02-29 08:24:04 --> Too few arguments to function App\Controllers\Kasir::clear(), 0 passed in C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php on line 832 and exactly 1 expected
+#0 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(832): App\Controllers\Kasir->clear()
+#1 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Kasir))
+#2 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\UKK_NormanAng\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp\htdocs\UKK_NormanAng\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+CRITICAL - 2024-02-29 08:33:44 --> Invalid file: laporan/laporan_penjualan.php
+#0 C:\xampp\htdocs\UKK_NormanAng\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('laporan/laporan...')
+#1 C:\xampp\htdocs\UKK_NormanAng\system\Common.php(1089): CodeIgniter\View\View->render('laporan/laporan...', Array, true)
+#2 C:\xampp\htdocs\UKK_NormanAng\app\Controllers\Laporan.php(42): view('laporan/laporan...', Array)
+#3 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(832): App\Controllers\Laporan->print_penjualan()
+#4 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+#5 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\UKK_NormanAng\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\UKK_NormanAng\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#8 {main}
+CRITICAL - 2024-02-29 08:39:58 --> Class 'App\Controllers\Border' not found
+#0 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(832): App\Controllers\Laporan->excel_penjualan()
+#1 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+#2 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\UKK_NormanAng\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 C:\xampp\htdocs\UKK_NormanAng\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#5 {main}
+CRITICAL - 2024-02-29 08:50:10 --> Invalid file: dashboard/dashboard.php
+#0 C:\xampp\htdocs\UKK_NormanAng\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('dashboard/dashb...')
+#1 C:\xampp\htdocs\UKK_NormanAng\system\Common.php(1089): CodeIgniter\View\View->render('dashboard/dashb...', Array, true)
+#2 C:\xampp\htdocs\UKK_NormanAng\app\Controllers\Dashboard.php(25): view('dashboard/dashb...')
+#3 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(832): App\Controllers\Dashboard->index()
+#4 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#5 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\UKK_NormanAng\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\UKK_NormanAng\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#8 {main}
+CRITICAL - 2024-02-29 08:56:00 --> syntax error, unexpected end of file
+#0 C:\xampp\htdocs\UKK_NormanAng\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 C:\xampp\htdocs\UKK_NormanAng\system\Common.php(1089): CodeIgniter\View\View->render('layout/menu', Array, true)
+#2 C:\xampp\htdocs\UKK_NormanAng\app\Controllers\Barang.php(114): view('layout/menu')
+#3 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(832): App\Controllers\Barang->pendataan_barang()
+#4 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Barang))
+#5 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\UKK_NormanAng\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\UKK_NormanAng\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#8 {main}
+CRITICAL - 2024-02-29 08:56:04 --> syntax error, unexpected end of file
+#0 C:\xampp\htdocs\UKK_NormanAng\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 C:\xampp\htdocs\UKK_NormanAng\system\Common.php(1089): CodeIgniter\View\View->render('layout/menu', Array, true)
+#2 C:\xampp\htdocs\UKK_NormanAng\app\Controllers\Barang.php(25): view('layout/menu')
+#3 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(832): App\Controllers\Barang->data_barang()
+#4 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Barang))
+#5 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\UKK_NormanAng\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\UKK_NormanAng\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#8 {main}
+CRITICAL - 2024-02-29 08:56:06 --> syntax error, unexpected end of file
+#0 C:\xampp\htdocs\UKK_NormanAng\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 C:\xampp\htdocs\UKK_NormanAng\system\Common.php(1089): CodeIgniter\View\View->render('layout/menu', Array, true)
+#2 C:\xampp\htdocs\UKK_NormanAng\app\Controllers\Petugas.php(25): view('layout/menu')
+#3 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(832): App\Controllers\Petugas->index()
+#4 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Petugas))
+#5 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\UKK_NormanAng\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\UKK_NormanAng\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#8 {main}
+CRITICAL - 2024-02-29 09:17:23 --> Invalid file: header.php
+#0 C:\xampp\htdocs\UKK_NormanAng\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('header.php')
+#1 C:\xampp\htdocs\UKK_NormanAng\system\Common.php(1089): CodeIgniter\View\View->render('header', Array, true)
+#2 C:\xampp\htdocs\UKK_NormanAng\app\Controllers\LogActivity.php(24): view('header', Array)
+#3 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(832): App\Controllers\LogActivity->index()
+#4 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogActivity))
+#5 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\UKK_NormanAng\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 C:\xampp\htdocs\UKK_NormanAng\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#8 {main}
+ERROR - 2024-02-29 09:19:51 --> Unknown column 'id_user_log' in 'field list'
+ERROR - 2024-02-29 09:21:47 --> Unknown column 'id_user_log' in 'field list'
+ERROR - 2024-02-29 09:23:21 --> Unknown column 'id_user_log' in 'field list'
+ERROR - 2024-02-29 09:26:21 --> Unknown column 'id_user_log' in 'field list'
+CRITICAL - 2024-02-29 09:30:03 --> syntax error, unexpected '"', expecting ')'
+#0 C:\xampp\htdocs\UKK_NormanAng\system\Router\Router.php(175): CodeIgniter\Router\Router->autoRoute('Kasir')
+#1 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(726): CodeIgniter\Router\Router->handle('Kasir')
+#2 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\UKK_NormanAng\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\UKK_NormanAng\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2024-02-29 09:30:16 --> syntax error, unexpected '.'
+#0 C:\xampp\htdocs\UKK_NormanAng\system\Router\Router.php(175): CodeIgniter\Router\Router->autoRoute('Kasir')
+#1 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(726): CodeIgniter\Router\Router->handle('Kasir')
+#2 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\UKK_NormanAng\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#5 C:\xampp\htdocs\UKK_NormanAng\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#6 {main}
+CRITICAL - 2024-02-29 09:32:47 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\UKK_NormanAng\app\Views\laporan\laporan_penjualan.php(77): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 77, Array)
+#1 C:\xampp\htdocs\UKK_NormanAng\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\UKK_NormanAng\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\UKK_NormanAng\system\Common.php(1089): CodeIgniter\View\View->render('laporan/laporan...', Array, true)
+#4 C:\xampp\htdocs\UKK_NormanAng\app\Controllers\Laporan.php(54): view('laporan/laporan...', Array)
+#5 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(832): App\Controllers\Laporan->print_penjualan()
+#6 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+#7 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\UKK_NormanAng\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\UKK_NormanAng\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2024-02-29 09:32:54 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\UKK_NormanAng\app\Views\laporan\laporan_penjualan.php(77): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 77, Array)
+#1 C:\xampp\htdocs\UKK_NormanAng\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\UKK_NormanAng\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\UKK_NormanAng\system\Common.php(1089): CodeIgniter\View\View->render('laporan/laporan...', Array, true)
+#4 C:\xampp\htdocs\UKK_NormanAng\app\Controllers\Laporan.php(54): view('laporan/laporan...', Array)
+#5 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(832): App\Controllers\Laporan->print_penjualan()
+#6 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Laporan))
+#7 C:\xampp\htdocs\UKK_NormanAng\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\UKK_NormanAng\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\UKK_NormanAng\system\Commands\Server\rewrite.php(43): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+ERROR - 2024-02-29 09:36:05 --> Unknown column 'id_user_log' in 'field list'

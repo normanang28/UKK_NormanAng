@@ -7,22 +7,23 @@ use Dompdf\Dompdf;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-class Dashboard extends BaseController
+class LogActivity extends BaseController
 {
     public function index()
     {
         $model=new M_model();
+        $on='log_activity.id_user_log=user.id_user';
+        $data['data'] = $model->fusion('log_activity', 'user', $on);
+
         $id=session()->get('id');
         $where=array('id_user'=>$id);
 
+        $where=array('id_user' => session()->get('id'));
         $data['foto']=$model->getRow('user',$where);
-        $data['barang']=$model->tampil('barang');
-        $data['pendataan_barang']=$model->tampil('pendataan_barang');
-        $data['kasir']=$model->tampil('barang_keluar');
 
-        echo view('layout/header', $data);
-        echo view('layout/menu');
-        echo view('dashboard');
-        echo view('layout/footer');
+        echo view ('layout/header', $data);
+        echo view ('layout/menu');
+        echo view ('log_activity/log_activity');
+        echo view ('layout/footer');
     }
 }
