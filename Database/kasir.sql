@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 29, 2024 at 04:16 AM
+-- Generation Time: Feb 29, 2024 at 05:03 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -41,7 +41,7 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id_barang`, `nama_barang`, `harga_barang`, `jumlah`, `maker_barang`, `tanggal_barang`) VALUES
-(5, 'kemeja hitam', '280000', '1', 2, '2024-02-29 08:05:39'),
+(5, 'kemeja hitam', '280000', '0', 2, '2024-02-29 08:05:39'),
 (6, 'kemeja putih', '400000', '5', 2, '2024-02-29 08:09:41'),
 (7, 'kaos putih', '250000', '0', 2, '2024-02-29 08:09:54'),
 (8, 'celana kain', '280000', '0', 2, '2024-02-29 08:10:06'),
@@ -61,6 +61,7 @@ INSERT INTO `barang` (`id_barang`, `nama_barang`, `harga_barang`, `jumlah`, `mak
 CREATE TABLE `barang_keluar` (
   `id_penjualan_barang` int(4) NOT NULL,
   `id_barang_pp` int(4) NOT NULL,
+  `nama_customer` varchar(255) NOT NULL,
   `qty` text NOT NULL,
   `dibayar` text NOT NULL,
   `kembalian` text NOT NULL,
@@ -74,10 +75,11 @@ CREATE TABLE `barang_keluar` (
 -- Dumping data for table `barang_keluar`
 --
 
-INSERT INTO `barang_keluar` (`id_penjualan_barang`, `id_barang_pp`, `qty`, `dibayar`, `kembalian`, `total_harga`, `maker_pp`, `tanggal_pp`, `tanggal_laporan`) VALUES
-(6, 5, '1', '280000', '0', '280000', 2, '2024-02-29 08:13:54', '2024-02-29'),
-(7, 5, '1', '280000', '0', '280000', 2, '2024-02-29 08:24:41', '2024-02-29'),
-(10, 6, '1', '400000', '0', '400000', 2, '2024-02-29 09:28:53', '2024-02-29');
+INSERT INTO `barang_keluar` (`id_penjualan_barang`, `id_barang_pp`, `nama_customer`, `qty`, `dibayar`, `kembalian`, `total_harga`, `maker_pp`, `tanggal_pp`, `tanggal_laporan`) VALUES
+(6, 5, 'Norman', '1', '280000', '0', '280000', 2, '2024-02-29 08:13:54', '2024-02-29'),
+(7, 5, 'Norman', '1', '280000', '0', '280000', 2, '2024-02-29 08:24:41', '2024-02-29'),
+(10, 6, 'Norman', '1', '400000', '0', '400000', 2, '2024-02-29 09:28:53', '2024-02-29'),
+(11, 5, 'asep', '1', '280000', '0', '280000', 2, '2024-02-29 11:02:35', '2024-02-29');
 
 --
 -- Triggers `barang_keluar`
@@ -126,7 +128,11 @@ INSERT INTO `log_activity` (`id_log`, `id_user_log`, `aktifitas`, `waktu`) VALUE
 (19, 2, 'Mereset password dengan ID 5', '2024-02-29 09:38:23'),
 (20, 2, 'mengedit data petugas dengan nama bong marvinn', '2024-02-29 09:40:07'),
 (21, 2, 'menambah data petugas dengan nama 1', '2024-02-29 09:40:48'),
-(22, 2, 'Menghapus data petugas dengan ID 6', '2024-02-29 09:40:52');
+(22, 2, 'Menghapus data petugas dengan ID 6', '2024-02-29 09:40:52'),
+(23, 2, 'LogOut dengan ID 2', '2024-02-29 10:29:41'),
+(24, 2, 'LogOut dengan ID 2', '2024-02-29 10:38:07'),
+(25, 2, 'LogOut dengan ID 2', '2024-02-29 10:56:45'),
+(26, 2, 'Menambah Data Penjualan Barang/Kasir Dengan ID barang 5', '2024-02-29 11:02:35');
 
 -- --------------------------------------------------------
 
@@ -174,6 +180,7 @@ DELIMITER ;
 CREATE TABLE `penjualan_barang` (
   `id_penjualan_barang` int(4) NOT NULL,
   `id_barang_pp` int(4) NOT NULL,
+  `nama_customer` varchar(255) NOT NULL,
   `qty` text NOT NULL,
   `dibayar` text NOT NULL,
   `kembalian` text NOT NULL,
@@ -182,6 +189,13 @@ CREATE TABLE `penjualan_barang` (
   `tanggal_pp` datetime NOT NULL DEFAULT current_timestamp(),
   `tanggal_laporan` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `penjualan_barang`
+--
+
+INSERT INTO `penjualan_barang` (`id_penjualan_barang`, `id_barang_pp`, `nama_customer`, `qty`, `dibayar`, `kembalian`, `total_harga`, `maker_pp`, `tanggal_pp`, `tanggal_laporan`) VALUES
+(12, 5, 'asep', '1', '280000', '0', '280000', 2, '2024-02-29 11:02:35', '2024-02-29');
 
 --
 -- Triggers `penjualan_barang`
@@ -299,13 +313,13 @@ ALTER TABLE `barang`
 -- AUTO_INCREMENT for table `barang_keluar`
 --
 ALTER TABLE `barang_keluar`
-  MODIFY `id_penjualan_barang` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_penjualan_barang` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `log_activity`
 --
 ALTER TABLE `log_activity`
-  MODIFY `id_log` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_log` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `pendataan_barang`
@@ -317,7 +331,7 @@ ALTER TABLE `pendataan_barang`
 -- AUTO_INCREMENT for table `penjualan_barang`
 --
 ALTER TABLE `penjualan_barang`
-  MODIFY `id_penjualan_barang` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_penjualan_barang` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `petugas`
@@ -329,7 +343,7 @@ ALTER TABLE `petugas`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_user` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
