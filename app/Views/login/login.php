@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="input-field">
-                        <input type="submit" class="submit" value="Sign In">
+                        <input type="submit" class="submit" value="Log In">
                     </div> 
                 </form>
             </div>  
@@ -53,6 +53,16 @@
   *{
     font-family: 'Poppins', sans-serif;
 }
+
+.text-center {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
 .wrapper {
     background-image: url("login/bg_login.jpeg");
     background-position: center;

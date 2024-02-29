@@ -64,6 +64,7 @@
         <thead>
           <tr>
             <th class="text-center">Tanggal Pembelian</th>
+            <th class="text-center">Nama Customer</th>
             <th class="text-center">Nama Barang</th>
             <th class="text-center">QTY</th>
             <th class="text-center">Total Pembelian</th>
@@ -78,6 +79,7 @@
             ?>
             <tr>
               <td class="text-capitalize text-center"><?php echo $dataa->tanggal_laporan?></td>
+              <td class="text-capitalize text-center"><?php echo $dataa->nama_customer?></td>
               <td class="text-capitalize text-center"><?php echo $dataa->nama_barang?></td>
               <td class="text-center text-capitalize text-dark text-success"><?php echo $dataa->qty?></td>
               <td class="text-capitalize text-center">Rp <?php echo number_format($dataa->total_harga, 2, ',', '.'); ?></td>

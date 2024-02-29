@@ -46,17 +46,4 @@ class Home extends BaseController
         }
         return redirect()->to('/');
     }
-
-    public function logout()
-    {
-        if(session()->get('id') > 0) {
-            $model = new M_model();
-            $id = session()->get('id');
-
-            session()->destroy();
-            return redirect()->to('/');
-        } else {
-            return redirect()->to('/Dashboard');
-        }
-    }
 }

@@ -12,6 +12,10 @@
 
                     <hr>
                     <div class="mb-3 col-md-12">
+                        <label class="form-label">Nama Customer<span style="color: black;"> :</span></label>
+                        <input type="text" id="nama_customer" name="nama_customer" class="form-control text-capitalize" placeholder="Nama Customer" autocomplete="on">
+                    </div>
+                    <div class="mb-3 col-md-12">
                         <label class="form-label">Nama Barang<span style="color: black;"> :</span></label>
                         <select name="id_barang" class="form-control text-capitalize" id="id_barang" required autocomplete="on">
                             <option disabled selected>Pilih Nama Barang</option>
@@ -306,6 +310,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				<table id="example" class="table items-table table table-bordered table-striped verticle-middle table-responsive-sm" style="min-width: 100%">
 					<thead>
 						<tr>
+                            <th style="text-align: center;">Nama Customer</th>
 							<th style="text-align: center;">Nama Barang</th>
 							<th style="text-align: center;">QTY</th>
                             <th style="text-align: center;">Total Harga</th>
@@ -317,6 +322,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     $no=1;
                     foreach ($data as $dataa){?>
 						<tr>
+                            <td style="text-align: center;" class="text-capitalize"><?php echo $dataa->nama_customer?></td>
 							<td style="text-align: center;" class="text-capitalize"><?php echo $dataa->nama_barang?></td>
 							<td style="text-align: center;" class="text-capitalize"><?php echo $dataa->qty ?></td>
 							<td style="text-align: center;" class="text-capitalize">Rp <?php echo number_format($dataa->total_harga, 2, ',', '.') ?></td>

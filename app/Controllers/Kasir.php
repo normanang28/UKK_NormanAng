@@ -39,6 +39,7 @@ class Kasir extends BaseController
         $model2 = new M_model();
         $model3 = new M_model();
         $id_barang = $this->request->getPost('id_barang');
+        $nama_customer = $this->request->getPost('nama_customer');
         $qty = $this->request->getPost('qty');
         $dibayar = $this->request->getPost('dibayar');
         $kembalian = $this->request->getPost('kembalian');
@@ -48,6 +49,7 @@ class Kasir extends BaseController
         $maker_pp = session()->get('id');
         $data = array(
             'id_barang_pp' => $id_barang,
+            'nama_customer' => $nama_customer,
             'qty' => $qty,
             'dibayar' => $dibayar,
             'kembalian' => $kembalian,
@@ -57,6 +59,7 @@ class Kasir extends BaseController
 
         $data2 = array(
             'id_barang_pp' => $id_barang,
+            'nama_customer' => $nama_customer,
             'qty' => $qty,
             'dibayar' => $dibayar,
             'kembalian' => $kembalian,
